@@ -1,47 +1,43 @@
-const changeColor = () => {
-    const change = document.getElementsByClassName("btn-outline-primary");
-    for(let i = 0; i < change.length; i++){
-        change[i].classList.remove("bg-primary")
+// MaxMulti
+let arr = [2, 3, -5, -2, 4];
+
+function adjacentElementsProduct(array) {
+    let max = 0;
+    for (let i = 0; i < array.length - 1; i++) {
+        let a = array[i] * array[i + 1];
+        if (a > max) {
+        max = a;
+        }
+    }
+
+   return max;
+}
+
+console.log(adjacentElementsProduct(arr));
+
+//TeamWeight
+const myArray = [60, 40, 55, 75, 64];
+const firstArray = [];
+const secondArray = [];
+
+for (let i in myArray){
+    if(i%2 == 0){
+        firstArray.push(myArray[i]);
+    } else {
+        secondArray.push(myArray[i]);
     }
 }
 
-let domainSelect = 1;
-
-document.getElementById("select-1").addEventListener("click", () => {
-    changeColor();
-    document.getElementById("select-1").classList.add("bg-primary");
-    domainSelect = 1;
-});
-
-document.getElementById("select-2").addEventListener("click", () => {
-    changeColor();
-    document.getElementById("select-3").classList.add("bg-primary");
-    domainSelect = 2;
-});
-
-document.getElementById("select-3").addEventListener("click", () => {
-    changeColor();
-    document.getElementById("select-3").classList.add("bg-primary");
-    domainSelect = 3;
-});
-
-const resultDoc = document.getElementById("resutl-doc");
-
-const getDataShortLink = () => {
-    valueLink = document.getElementById("floatingInput").value;
-    fetch("https://api.shrtco.de/v2/shorten?url=" + valueLink)
-    .then(respond => respond.json())
-    .then(data => {
-        if(domainSelect=1) {
-            resultDoc.innerText = data.result.short_link;
-        }
-        if(domainSelect=2) {
-            resultDoc.innerText = data.result.short_link2;
-        }
-        if(domainSelect=3) {
-            resultDoc.innerText = data.result.short_link3;
-        }
-    })
+const alternativeSum = (a) => {
+    let sum = 0;
+    for(let i in a){
+        sum += a[i];
+    }
+    return sum;
 }
 
-document.getElementById("clickResult").addEventListener("click", getDataShortLink);
+const firstSum = alternativeSum(firstArray);
+const secondSum = alternativeSum(secondArray);
+
+let finalSum = [firstSum, secondSum];
+console.log(finalSum);
